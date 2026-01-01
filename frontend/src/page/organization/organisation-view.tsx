@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import { useAuth } from "../../hoc/authContext";
 import { LoadingPage } from "../../component/loading";
 import { authenticatedRequest } from "../../API/apiCall";
-import { ROLE } from "../../API/constant";
+import { ROLE } from "../../constant";
 
 export function OrganisationDetail() {
   const { organisationId } = useParams();

@@ -3,7 +3,7 @@ import { authenticatedRequest } from "../../API/apiCall";
 import { useAuth } from "../../hoc/authContext";
 import { useNavigate } from "react-router-dom";
 import { LoadingPage } from "../../component/loading";
-import { ROLE } from "../../API/constant";
+import { ROLE } from "../../constant";
 
 export default function DashboardAnalytics() {
   const [organisations, setOrganisations] = useState<Record<string, any>[]>([]);
