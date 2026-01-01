@@ -1,7 +1,7 @@
-version: '3.8'
+version: '3.9'
 
 services:
-  polling-app:
+  veridico-backend:
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -10,15 +10,31 @@ services:
     depends_on:
       - database
     environment:
-      - MONGODB_URL=mongodb://mongodb:27017/polling-app
+      POSTGRES_HOST: database
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: veridico
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: thanh1708
+      POSTGRES_SSL: 'false'
+      JWT_SECRET_KEY: MwRNqFiPKP2NUswYpYA3
     networks:
       - my-network
-
   database:
-    
-
+    image: postgres:16
+    container_name: postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: veridico
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: thanh1708
+      TZ: Asia/Ho_Chi_Minh
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 volumes:
-  mongodb_data:
+  postgres_data:
+
 networks:
   my-network:
     driver: bridge

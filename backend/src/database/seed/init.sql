@@ -1,0 +1,2 @@
+INSERT INTO "user" (first_name, last_name, email, password, mobile_number, role)
+VALUES ('Super', 'Admin', 'superadmin@gmail.com', '$2a$12$sfEpSFAUNm7W/gMIHdUQyu.ZvI.ePQNEhVJfDiWnoH7m/NCE7ajy.', '0362163467', 'superadmin');

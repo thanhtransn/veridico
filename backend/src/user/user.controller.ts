@@ -20,7 +20,7 @@ export class UserController {
     return this.userService.update({role: ROLE.SUPERADMIN}, user)
   }
 
-  // @Roles(ROLE.SUPERADMIN)
+  @Roles(ROLE.SUPERADMIN)
   @Get('list-valid-user-tobe-adminstrator')
   async getValidUserToAdminstratorList() {
     return await this.userService.findValidUserToAdminstratorList()

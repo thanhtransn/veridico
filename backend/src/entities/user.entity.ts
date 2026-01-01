@@ -2,9 +2,9 @@ import { Column, Entity, JoinColumn, JoinTable, ManyToOne, OneToOne, PrimaryGene
 import { Organisation } from "./organisation.entity";
 
 export enum ROLE {
-  USER =  'User',
-  ADMiNSTRATOR = 'Adminstrator',
-  SUPERADMIN = 'Superadmin'
+  USER =  'user',
+  ADMiNSTRATOR = 'adminstrator',
+  SUPERADMIN = 'superadmin'
 }
 @Entity()
 export class User {
