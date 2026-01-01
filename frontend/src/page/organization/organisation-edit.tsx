@@ -7,6 +7,7 @@ import { format } from "date-fns";
 export function EditOrganisationForm() {
     const [form, setForm] = useState<any>(null);
     const [users, setValidUser] = useState<Record<string, any>[]>([]);
+    const [disabledEdit, setDisableEdit] = useState(true);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [message, setMessage] = useState<string | null>(null);
@@ -43,6 +44,7 @@ export function EditOrganisationForm() {
             ...prev,
             [name]: type === "checkbox" ? checked : type === 'date' ? new Date(value) : type === 'number' ? Number(value) : value,
         }));
+        setDisableEdit(false)
     };
 
     const toggleAdmin = (userId: number) => {
@@ -70,7 +72,7 @@ export function EditOrganisationForm() {
         }
 
         setError(null);
-
+        setDisableEdit(true)
 
         const response = await authenticatedRequest({
             path: `organisation/update/${organisationId}`,
@@ -204,7 +206,7 @@ export function EditOrganisationForm() {
             {error && <div className="alert alert-danger mt-3">{error}</div>}
             {message && <div className="alert alert-success mt-3">{message}</div>}
             <div className="mt-4 text-end">
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-primary" disabled={disabledEdit}>
                     Save Changes
                 </button>
             </div>

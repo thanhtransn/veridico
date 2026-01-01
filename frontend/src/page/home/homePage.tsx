@@ -88,9 +88,10 @@ export default function DashboardAnalytics() {
                         <button className="btn btn-sm btn-outline-secondary me-2" onClick={() => navigate(`organisation/${org.id}`)}>
                           View
                         </button>
-                        <button className="btn btn-sm btn-outline-secondary me-2" onClick={() => navigate(`organisation/edit/${org.id}`)}>
+                        { user?.role === ROLE.SUPERADMIN && <button className="btn btn-sm btn-outline-secondary me-2" onClick={() => navigate(`organisation/edit/${org.id}`)}>
                           Edit
                         </button>
+                        }
                       </td>
                     </tr>
                   ))}
