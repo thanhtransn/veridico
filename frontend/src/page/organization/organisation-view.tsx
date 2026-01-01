@@ -31,9 +31,7 @@ export function OrganisationDetail() {
   if (error)
     return <div className="alert alert-danger m-4">{error}</div>;
 
-  const isAdmin = organisation.administrators?.some(
-    (admin: any) => admin.id === user?.id
-  ) || user.role === ROLE.SUPERADMIN
+  const isAdmin = user.role === ROLE.SUPERADMIN
 
   return (
     <div className="container mt-4">
